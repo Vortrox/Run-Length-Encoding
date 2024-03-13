@@ -1,6 +1,8 @@
 package edu.deakin.sit333;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.edge.EdgeDriver;
 
 /**
@@ -82,7 +84,9 @@ public class SeleniumOperations {
 	 */
 	public static void openBrowserLoadPageResizeClose() {
 		// Fill your personal information.
-		System.out.println("Hello from <Student ID>, <Full name>");
+		// todo: Fill with real information before submitting. Do not commit.
+//		System.out.println("Hello from <Student ID>, <Full name>");
+		System.out.println("Hello from ---------, Vortrox");
 
 		System.out.println("Fire up Edge browser.");
 		WebDriver driver = getEdgeDriver();
@@ -94,18 +98,20 @@ public class SeleniumOperations {
 		/*
 		 * Load google page.
 		 */
-		// Write code here.
+		driver.get("https://google.com");
 		
 		/*
 		 * Set window size manually to 640x480 and wait 2 second.
 		 * Hint: Explore Selenium window functions to select one which allows to pass window size in WxH.
 		 */
-		// write code
+		Window window = driver.manage().window();
+		window.setSize(new Dimension(640, 480));
+		sleep(2);
 		
 		/*
 		 * Double window size manually to 1280x960 and wait 2 second.		 
 		 */
-		// write code
+		window.setSize(new Dimension(1280, 960));
 		
 		// Sleep a while
 		sleep(2);
