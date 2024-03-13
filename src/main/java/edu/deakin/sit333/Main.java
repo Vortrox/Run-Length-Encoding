@@ -1,25 +1,37 @@
 package edu.deakin.sit333;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import edu.deakin.sit333.SeleniumOperations;
 
+/**
+ * Hello world!
+ *	
+ * @author Ahsan Habib
+ */
 public class Main {
-    public static void main(String[] args) {
-        System.setProperty(
-                "webdriver.edge.driver",
-                "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_122.0.2365.66.exe");
 
-        WebDriver driver = new EdgeDriver();
-        System.out.println(driver);
+	/*
+	 * Main entry point of a Java program.
+	 */
+	public static void main(String[] args) {
 
-        driver.get("https://www.google.com");
+		int choice = 3;
 
-        try {
-            Thread.sleep(5*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        driver.close();
-    }
+		switch (choice) {
+		case 1:
+			SeleniumOperations.open_chrome_and_close();
+			break;
+		case 2:
+			SeleniumOperations.open_chrome_maximize_close();
+			break;
+		case 3:
+			SeleniumOperations.load_web_page_close();
+			break;
+		case 4:
+			SeleniumOperations.open_chrome_loadpage_resize_close();
+			break;
+		default:
+			System.out.println("Invalid choice.");
+			break;
+		}
+	}
 }
