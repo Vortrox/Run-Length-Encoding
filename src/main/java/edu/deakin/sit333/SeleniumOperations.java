@@ -22,7 +22,7 @@ public class SeleniumOperations {
 		}
 	}
 	
-	public static void open_chrome_and_close() {
+	public static void openBrowserAndClose() {
 		System.out.println("Fire up Edge browser.");
 		WebDriver driver = getEdgeDriver();
 		
@@ -41,7 +41,7 @@ public class SeleniumOperations {
 		
 	}
 
-	public static void open_chrome_maximize_close() {
+	public static void openBrowserMaximizeClose() {
 		System.out.println("Fire up Edge browser.");
 		WebDriver driver = getEdgeDriver();
 
@@ -59,7 +59,7 @@ public class SeleniumOperations {
 		driver.close();
 	}
 
-	public static void load_web_page_close() {
+	public static void loadWebPageClose() {
 		System.out.println("Fire up Edge browser.");
 		WebDriver driver = getEdgeDriver();
 		
@@ -80,7 +80,7 @@ public class SeleniumOperations {
 	/*
 	 * You have to complete this function.
 	 */
-	public static void open_chrome_loadpage_resize_close() {
+	public static void openBrowserLoadPageResizeClose() {
 		// Fill your personal information.
 		System.out.println("Hello from <Student ID>, <Full name>");
 

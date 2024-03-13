@@ -1,7 +1,5 @@
 package edu.deakin.sit333;
 
-import edu.deakin.sit333.SeleniumOperations;
-
 /**
  * Hello world!
  *	
@@ -18,16 +16,16 @@ public class Main {
 
 		switch (choice) {
 		case 1:
-			SeleniumOperations.open_chrome_and_close();
+			SeleniumOperations.openBrowserAndClose();
 			break;
 		case 2:
-			SeleniumOperations.open_chrome_maximize_close();
+			SeleniumOperations.openBrowserMaximizeClose();
 			break;
 		case 3:
-			SeleniumOperations.load_web_page_close();
+			SeleniumOperations.loadWebPageClose();
 			break;
 		case 4:
-			SeleniumOperations.open_chrome_loadpage_resize_close();
+			SeleniumOperations.openBrowserLoadPageResizeClose();
 			break;
 		default:
 			System.out.println("Invalid choice.");
