@@ -1,13 +1,18 @@
 package edu.deakin.sit333;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 /**
  * @author Ahsan Habib
  */
 public class SeleniumOperations {
-	
+	private static WebDriver getEdgeDriver() {
+		// todo: It may be worthwhile loading this property from something similar to an .env file in the future
+		System.setProperty("webdriver.edge.driver", "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_122.0.2365.66.exe");
+		return new EdgeDriver();
+	}
+
 	public static void sleep(int sec) {
 		try {
 			Thread.sleep(sec*1000);
@@ -17,14 +22,9 @@ public class SeleniumOperations {
 		}
 	}
 	
-	
 	public static void open_chrome_and_close() {
-		// Step 1: Locate chrome driver folder (chromium browser) in the local drive.
-		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
-		
-		// Step 2: Use above chrome driver to open up a chromium browser.
-		System.out.println("Fire up chrome browser.");
-		WebDriver driver = new ChromeDriver();
+		System.out.println("Fire up Edge browser.");
+		WebDriver driver = getEdgeDriver();
 		
 		System.out.println("Driver info: " + driver);
 		
@@ -40,16 +40,11 @@ public class SeleniumOperations {
 		driver.close();
 		
 	}
-	
 
 	public static void open_chrome_maximize_close() {
-		// Step 1: Locate chrome driver folder in the local drive.
-		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
-		
-		// Step 2: Use above chrome driver to open up a chromium browser.
-		System.out.println("Fire up chrome browser.");
-		WebDriver driver = new ChromeDriver();
-		
+		System.out.println("Fire up Edge browser.");
+		WebDriver driver = getEdgeDriver();
+
 		System.out.println("Driver info: " + driver);
 		
 		sleep(5);
@@ -61,17 +56,12 @@ public class SeleniumOperations {
 		sleep(5);
 		
 		// close chrome driver. You can comment below line to keep the browser opened.
-		driver.close();	
+		driver.close();
 	}
 
-	
 	public static void load_web_page_close() {
-		// Step 1: Locate chrome driver folder in the local drive.
-		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
-		
-		// Step 2: Use above chrome driver to open up a chromium browser.
-		System.out.println("Fire up chrome browser.");
-		WebDriver driver = new ChromeDriver();
+		System.out.println("Fire up Edge browser.");
+		WebDriver driver = getEdgeDriver();
 		
 		System.out.println("Driver info: " + driver);
 		
@@ -93,13 +83,9 @@ public class SeleniumOperations {
 	public static void open_chrome_loadpage_resize_close() {
 		// Fill your personal information.
 		System.out.println("Hello from <Student ID>, <Full name>");
-		
-		// Step 1: Locate chrome driver folder in the local drive.
-		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
-		
-		// Step 2: Use above chrome driver to open up a chromium browser.
-		System.out.println("Fire up chrome browser.");
-		WebDriver driver = new ChromeDriver();
+
+		System.out.println("Fire up Edge browser.");
+		WebDriver driver = getEdgeDriver();
 		
 		System.out.println("Driver info: " + driver);
 		
