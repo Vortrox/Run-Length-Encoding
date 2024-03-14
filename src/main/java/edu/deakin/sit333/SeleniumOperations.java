@@ -48,15 +48,34 @@ public class SeleniumOperations {
 		
 		// Find first input field which is firstname
 		WebElement element = driver.findElement(By.id("firstname"));
-		System.out.println("Found element: " + element);
+		System.out.println("First name element: " + element);
 		// Send first name
-		element.sendKeys("Ahsan");
-		
+		element.sendKeys("Vortrox");
+
 		/*
 		 * Find following input fields and populate with values
 		 */
-		// Write code
-		
+		// todo: Fill with real info before submitting. Do not commit.
+		element = driver.findElement(By.id("lastname"));
+		System.out.println("Last name element: " + element);
+		element.sendKeys("117");
+
+		element = driver.findElement(By.id("phoneNumber"));
+		System.out.println("Phone number element: " + element);
+		element.sendKeys("04--------");
+
+		element = driver.findElement(By.id("email"));
+		System.out.println("Email element: " + element);
+		element.sendKeys("vortrox117@gmail.com");
+
+		String password = "12345";
+		element = driver.findElement(By.id("password"));
+		System.out.println("Password element: " + element);
+		element.sendKeys(password);
+
+		element = driver.findElement(By.id("confirmPassword"));
+		System.out.println("Confirm password element: " + element);
+		element.sendKeys(password);
 		
 		/*
 		 * Identify button 'Create account' and click to submit using Selenium API.
