@@ -80,8 +80,10 @@ public class SeleniumOperations {
 		/*
 		 * Identify button 'Create account' and click to submit using Selenium API.
 		 */
-		// Write code
-		
+		element = driver.findElement(By.xpath("//*[text()='Create account']"));
+		System.out.println("Create account element: " + element);
+		element.click();
+
 		/*
 		 * Take screenshot using selenium API.
 		 */
