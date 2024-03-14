@@ -23,7 +23,7 @@ public class SeleniumOperations {
 		}
 	}
 	
-	public static void officeworks_registration_page(String url) {
+	public static void officeworksRegistrationPage(String url) {
 		// Step 1: Locate chrome driver folder in the local drive.
 		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
 		
