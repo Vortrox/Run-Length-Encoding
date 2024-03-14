@@ -1,9 +1,14 @@
 package edu.deakin.sit333;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * This class demonstrates Selenium locator APIs to identify HTML elements.
@@ -87,9 +92,15 @@ public class SeleniumOperations {
 		/*
 		 * Take screenshot using selenium API.
 		 */
-		// Write code
-		
-		
+		try {
+			FileOutputStream outputStream = new FileOutputStream("screenshot.png");
+			byte[] screenshotData = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+			outputStream.write(screenshotData);
+			outputStream.close();
+		} catch (IOException ignore) {
+
+		}
+
 		// Sleep a while
 		sleep(2);
 		
