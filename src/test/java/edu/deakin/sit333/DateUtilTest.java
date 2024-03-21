@@ -14,13 +14,13 @@ public class DateUtilTest {
 	
 	@Test
 	public void testStudentIdentity() {
-		String studentId = null;
+		String studentId = "0";
 		Assert.assertNotNull("Student ID is null", studentId);
 	}
 
 	@Test
 	public void testStudentName() {
-		String studentName = null;
+		String studentName = "Vortrox";
 		Assert.assertNotNull("Student name is null", studentName);
 	}
 
@@ -61,12 +61,25 @@ public class DateUtilTest {
 	
 	@Test
 	public void testMinJanuary1ShouldIncrementToJanuary2() {
-		// Code here
+		DateUtil date = new DateUtil(1, 1, 2024);
+		// todo: check message
+		System.out.println("january1ShouldIncrementToJanuary2 > " + date);
+		date.increment();
+		System.out.println(date);
+		Assert.assertEquals(1, date.getMonth());
+		Assert.assertEquals(2, date.getDay());
 	}
 	
 	@Test
 	public void testMinJanuary1ShouldDecrementToDecember31() {
-		// Code here
+		DateUtil date = new DateUtil(1, 1, 2024);
+		// todo: check message
+		System.out.println("january1ShouldDecrementToDecember31 > " + date);
+		date.decrement();
+		System.out.println(date);
+		Assert.assertEquals(2023, date.getYear());
+		Assert.assertEquals(12, date.getMonth());
+		Assert.assertEquals(31, date.getDay());
 	}
 	
 	/*
