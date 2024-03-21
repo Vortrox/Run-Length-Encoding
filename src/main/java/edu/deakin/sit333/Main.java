@@ -1,25 +1,53 @@
 package edu.deakin.sit333;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
-        System.setProperty(
-                "webdriver.edge.driver",
-                "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_122.0.2365.66.exe");
+/**
+ * Hello world!
+ * @author Ahsan Habib
+ */
+public class Main
+{
+    public static void main( String[] args )
+    {
+        /*
+         * January max boundary area: max-1, max+1
+         */
+        System.out.println("January max: increment should go to February.");
+        DateUtil date = new DateUtil(31, 1, 2024);
+        System.out.println(date);
+        date.increment();
+        System.out.println(date);
 
-        WebDriver driver = new EdgeDriver();
-        System.out.println(driver);
+        System.out.println("January max: decrement should be 30 January.");
+        date = new DateUtil(31, 1, 2024);
+        System.out.println(date);
+        date.decrement();
+        System.out.println(date);
 
-        driver.get("https://www.google.com");
+        /*
+         * January nominal (somewhere between min and max)
+         */
+        System.out.println("January random day between (1, 31): increment should be 1 day next.");
+        int rand_day_1_to_31 = 1 + new Random().nextInt(31);
+        date = new DateUtil(rand_day_1_to_31, 1, 2024);
+        System.out.println(date);
+        date.increment();
+        System.out.println(date);
 
-        try {
-            Thread.sleep(5*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        /*
+         * January min boundary area: min+1, min-1
+         */
+        System.out.println("January min: increment should be 2nd January.");
+        date = new DateUtil(1, 1, 2024);
+        System.out.println(date);
+        date.increment();
+        System.out.println(date);
 
-        driver.close();
+        System.out.println("January min: decrement should be 31 December previous year.");
+        date = new DateUtil(1, 1, 2024);
+        System.out.println(date);
+        date.decrement();
+        System.out.println(date);
     }
 }
