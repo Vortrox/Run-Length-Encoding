@@ -4,12 +4,11 @@ import java.util.Random;
 
 /**
  * Hello world!
+ *
  * @author Ahsan Habib
  */
-public class Main
-{
-    public static void main( String[] args )
-    {
+public class Main {
+    public static void main(String[] args) {
         /*
          * January max boundary area: max-1, max+1
          */
