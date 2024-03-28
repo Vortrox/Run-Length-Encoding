@@ -85,4 +85,27 @@ public class DateUtilTest {
     /*
      * Write tests for rest months of year 2024.
      */
+    @Test
+    public void testMaxFebruary29ShouldDecrementToFebruary28() {
+        DateUtil date = new DateUtil(29, 2, 2024);
+        // todo: check message
+        System.out.println("january31ShouldIncrementToFebruary1 > " + date);
+        date.decrement();
+        System.out.println(date);
+        Assert.assertEquals(2024, date.getYear());
+        Assert.assertEquals(2, date.getMonth());
+        Assert.assertEquals(28, date.getDay());
+    }
+
+
+    // todo:
+    //  decrement on first day
+    //  increment on first day
+    //  increment on nominal day
+    //  decrement on nominal day
+    //  decrement on last day
+    //  increment on last day
+    //  total cases: 6 cases * 12 months = 72 cases
+    // Wouldn't nominal day cases be covered by incrementing on first day and decrementing on last day?
+    // todo: Write a Python script to automate this, I'm not going to write this many test cases manually
 }
