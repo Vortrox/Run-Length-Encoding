@@ -25,3 +25,28 @@ dates = """
 11B 15 06 2023 16 06 2023
 12B 15 06 2024 16 06 2024
 """[1:-1]
+
+dates = dates.split("\n")
+
+with open("dates_output.txt", "a") as fp:
+    for date in dates:
+        if date.startswith("5A"):
+            continue
+        test_code, from_day, from_month, from_year, to_day, to_month, to_year = date.split(" ")
+        increment_decrement = "Decrement" if test_code[1] == "A" else "Increment"
+        # Example test case name: 1994_06_01ShouldDecrementTo1994_05_31
+        test_case_name = f"{from_year}_{from_month}_{from_day}Should{increment_decrement}To{to_year}_{to_month}_{to_day}"
+        template = (
+        f"        @Test\n"
+        f"        public void test{test_code}{test_case_name}() {{\n"
+        f"            DateUtil date = new DateUtil({int(from_day)}, {int(from_month)}, {int(from_year)});\n"
+        f"            System.out.println(\"{test_case_name} > \" + date);\n"
+        f"            date.decrement();\n"
+        f"            System.out.println(date);\n"
+        f"            Assert.assertEquals({int(to_year)}, date.getYear());\n"
+        f"            Assert.assertEquals({int(to_month)}, date.getMonth());\n"
+        f"            Assert.assertEquals({int(to_day)}, date.getDay());\n"
+        f"        }}\n\n"
+        )
+        print(template, end="")
+        fp.write(template)

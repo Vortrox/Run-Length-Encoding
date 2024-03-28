@@ -96,16 +96,4 @@ public class DateUtilTest {
         Assert.assertEquals(2, date.getMonth());
         Assert.assertEquals(28, date.getDay());
     }
-
-
-    // todo:
-    //  decrement on first day
-    //  increment on first day
-    //  increment on nominal day
-    //  decrement on nominal day
-    //  decrement on last day
-    //  increment on last day
-    //  total cases: 6 cases * 12 months = 72 cases
-    // Wouldn't nominal day cases be covered by incrementing on first day and decrementing on last day?
-    // todo: Write a Python script to automate this, I'm not going to write this many test cases manually
 }
