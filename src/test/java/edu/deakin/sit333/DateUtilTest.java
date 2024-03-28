@@ -11,7 +11,6 @@ import org.junit.Test;
  * @author Ahsan Habib
  */
 public class DateUtilTest {
-    // TODO: CHANGE INDENTATION TO 4X SPACES
     @Test
     public void testStudentIdentity() {
         String studentId = "0";
@@ -62,7 +61,6 @@ public class DateUtilTest {
     @Test
     public void testMinJanuary1ShouldIncrementToJanuary2() {
         DateUtil date = new DateUtil(1, 1, 2024);
-        // todo: check message
         System.out.println("january1ShouldIncrementToJanuary2 > " + date);
         date.increment();
         System.out.println(date);
@@ -73,7 +71,6 @@ public class DateUtilTest {
     @Test
     public void testMinJanuary1ShouldDecrementToDecember31() {
         DateUtil date = new DateUtil(1, 1, 2024);
-        // todo: check message
         System.out.println("january1ShouldDecrementToDecember31 > " + date);
         date.decrement();
         System.out.println(date);
