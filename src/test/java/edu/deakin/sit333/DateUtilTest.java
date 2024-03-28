@@ -224,7 +224,7 @@ public class DateUtilTest {
     public void test1B1994_06_01ShouldIncrementTo1994_06_02() {
         DateUtil date = new DateUtil(1, 6, 1994);
         System.out.println("1994_06_01ShouldIncrementTo1994_06_02 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -235,7 +235,7 @@ public class DateUtilTest {
     public void test2B1994_06_02ShouldIncrementTo1994_06_03() {
         DateUtil date = new DateUtil(2, 6, 1994);
         System.out.println("1994_06_02ShouldIncrementTo1994_06_03 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -246,7 +246,7 @@ public class DateUtilTest {
     public void test3B1994_06_15ShouldIncrementTo1994_06_16() {
         DateUtil date = new DateUtil(15, 6, 1994);
         System.out.println("1994_06_15ShouldIncrementTo1994_06_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -257,7 +257,7 @@ public class DateUtilTest {
     public void test4B1994_06_30ShouldIncrementTo1994_07_01() {
         DateUtil date = new DateUtil(30, 6, 1994);
         System.out.println("1994_06_30ShouldIncrementTo1994_07_01 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(7, date.getMonth());
@@ -268,7 +268,7 @@ public class DateUtilTest {
     public void test5B1994_01_15ShouldIncrementTo1994_01_16() {
         DateUtil date = new DateUtil(15, 1, 1994);
         System.out.println("1994_01_15ShouldIncrementTo1994_01_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(1, date.getMonth());
@@ -279,7 +279,7 @@ public class DateUtilTest {
     public void test6B1994_02_15ShouldIncrementTo1994_02_16() {
         DateUtil date = new DateUtil(15, 2, 1994);
         System.out.println("1994_02_15ShouldIncrementTo1994_02_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(2, date.getMonth());
@@ -290,7 +290,7 @@ public class DateUtilTest {
     public void test7B1994_11_15ShouldIncrementTo1994_11_16() {
         DateUtil date = new DateUtil(15, 11, 1994);
         System.out.println("1994_11_15ShouldIncrementTo1994_11_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(11, date.getMonth());
@@ -301,7 +301,7 @@ public class DateUtilTest {
     public void test8B1994_12_15ShouldIncrementTo1994_12_16() {
         DateUtil date = new DateUtil(15, 12, 1994);
         System.out.println("1994_12_15ShouldIncrementTo1994_12_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1994, date.getYear());
         Assert.assertEquals(12, date.getMonth());
@@ -312,7 +312,7 @@ public class DateUtilTest {
     public void test9B1700_06_15ShouldIncrementTo1700_06_16() {
         DateUtil date = new DateUtil(15, 6, 1700);
         System.out.println("1700_06_15ShouldIncrementTo1700_06_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1700, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -323,7 +323,7 @@ public class DateUtilTest {
     public void test10B1701_06_15ShouldIncrementTo1701_06_16() {
         DateUtil date = new DateUtil(15, 6, 1701);
         System.out.println("1701_06_15ShouldIncrementTo1701_06_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(1701, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -334,7 +334,7 @@ public class DateUtilTest {
     public void test11B2023_06_15ShouldIncrementTo2023_06_16() {
         DateUtil date = new DateUtil(15, 6, 2023);
         System.out.println("2023_06_15ShouldIncrementTo2023_06_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(2023, date.getYear());
         Assert.assertEquals(6, date.getMonth());
@@ -345,7 +345,7 @@ public class DateUtilTest {
     public void test12B2024_06_15ShouldIncrementTo2024_06_16() {
         DateUtil date = new DateUtil(15, 6, 2024);
         System.out.println("2024_06_15ShouldIncrementTo2024_06_16 > " + date);
-        date.decrement();
+        date.increment();
         System.out.println(date);
         Assert.assertEquals(2024, date.getYear());
         Assert.assertEquals(6, date.getMonth());

@@ -41,7 +41,7 @@ with open("dates_output.txt", "a") as fp:
         f"        public void test{test_code}{test_case_name}() {{\n"
         f"            DateUtil date = new DateUtil({int(from_day)}, {int(from_month)}, {int(from_year)});\n"
         f"            System.out.println(\"{test_case_name} > \" + date);\n"
-        f"            date.decrement();\n"
+        f"            date.{increment_decrement.lower()}();\n"
         f"            System.out.println(date);\n"
         f"            Assert.assertEquals({int(to_year)}, date.getYear());\n"
         f"            Assert.assertEquals({int(to_month)}, date.getMonth());\n"
