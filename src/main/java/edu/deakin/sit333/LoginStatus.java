@@ -8,7 +8,7 @@ public class LoginStatus {
 
 	private boolean loginSuccess = false;
 	private String errorMsg = "";
-	
+
 	public LoginStatus(boolean status, String errorMsg) {
 		this.loginSuccess = status;
 		this.errorMsg = errorMsg;
@@ -26,6 +26,6 @@ public class LoginStatus {
 	public String toString() {
 		return "LoginStatus [loginSuccess=" + loginSuccess + ", errorMsg=" + errorMsg + "]";
 	}
-	
-	
+
+
 }
