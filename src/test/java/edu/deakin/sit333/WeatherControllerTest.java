@@ -1,10 +1,23 @@
 package edu.deakin.sit333;
 
 import edu.deakin.sit333.WeatherController;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class WeatherControllerTest {
+    private WeatherController wController;
+
+    @Before
+    public void setup() {
+        wController = WeatherController.getInstance();
+    }
+
+    @After
+    public void tearDown() {
+        wController.close();
+    }
 
     @Test
     public void testStudentIdentity() {
@@ -22,9 +35,6 @@ public class WeatherControllerTest {
     public void testTemperatureMin() {
         System.out.println("+++ testTemperatureMin +++");
 
-        // Initialise controller
-        WeatherController wController = WeatherController.getInstance();
-
         // Retrieve all the hours temperatures recorded as for today
         int nHours = wController.getTotalHours();
         double minTemperature = 1000;
@@ -38,17 +48,11 @@ public class WeatherControllerTest {
 
         // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureMinFromCache() == minTemperature);
-
-        // Shutdown controller
-        wController.close();
     }
 
     @Test
     public void testTemperatureMax() {
         System.out.println("+++ testTemperatureMax +++");
-
-        // Initialise controller
-        WeatherController wController = WeatherController.getInstance();
 
         // Retrieve all the hours temperatures recorded as for today
         int nHours = wController.getTotalHours();
@@ -63,17 +67,11 @@ public class WeatherControllerTest {
 
         // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureMaxFromCache() == maxTemperature);
-
-        // Shutdown controller
-        wController.close();
     }
 
     @Test
     public void testTemperatureAverage() {
         System.out.println("+++ testTemperatureAverage +++");
-
-        // Initialise controller
-        WeatherController wController = WeatherController.getInstance();
 
         // Retrieve all the hours temperatures recorded as for today
         int nHours = wController.getTotalHours();
@@ -87,9 +85,6 @@ public class WeatherControllerTest {
 
         // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureAverageFromCache() == averageTemp);
-
-        // Shutdown controller
-        wController.close();
     }
 
     @Test
