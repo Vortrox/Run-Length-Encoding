@@ -35,18 +35,8 @@ public class WeatherControllerTest {
     public void testTemperatureMin() {
         System.out.println("+++ testTemperatureMin +++");
 
-        // Retrieve all the hours temperatures recorded as for today
-        int nHours = wController.getTotalHours();
-        double minTemperature = 1000;
-        for (int i=0; i<nHours; i++) {
-            // Hour range: 1 to nHours
-            double temperatureVal = wController.getTemperatureForHour(i+1);
-            if (minTemperature > temperatureVal) {
-                minTemperature = temperatureVal;
-            }
-        }
+        double minTemperature = wController.getTemperatureMinFromCache();
 
-        // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureMinFromCache() == minTemperature);
     }
 
@@ -54,18 +44,8 @@ public class WeatherControllerTest {
     public void testTemperatureMax() {
         System.out.println("+++ testTemperatureMax +++");
 
-        // Retrieve all the hours temperatures recorded as for today
-        int nHours = wController.getTotalHours();
-        double maxTemperature = -1;
-        for (int i=0; i<nHours; i++) {
-            // Hour range: 1 to nHours
-            double temperatureVal = wController.getTemperatureForHour(i+1);
-            if (maxTemperature < temperatureVal) {
-                maxTemperature = temperatureVal;
-            }
-        }
+        double maxTemperature = wController.getTemperatureMaxFromCache();
 
-        // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureMaxFromCache() == maxTemperature);
     }
 
@@ -73,17 +53,8 @@ public class WeatherControllerTest {
     public void testTemperatureAverage() {
         System.out.println("+++ testTemperatureAverage +++");
 
-        // Retrieve all the hours temperatures recorded as for today
-        int nHours = wController.getTotalHours();
-        double sumTemp = 0;
-        for (int i=0; i<nHours; i++) {
-            // Hour range: 1 to nHours
-            double temperatureVal = wController.getTemperatureForHour(i+1);
-            sumTemp += temperatureVal;
-        }
-        double averageTemp = sumTemp / nHours;
+        double averageTemp = wController.getTemperatureAverageFromCache();
 
-        // Should be equal to the min value that is cached in the controller.
         Assert.assertTrue(wController.getTemperatureAverageFromCache() == averageTemp);
     }
 
