@@ -1,21 +1,20 @@
 package edu.deakin.sit333;
 
-import edu.deakin.sit333.WeatherController;
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class WeatherControllerTest {
-    private WeatherController wController;
+    private static WeatherController wController;
 
-    @Before
-    public void setup() {
+    @BeforeClass
+    public static void setup() {
         wController = WeatherController.getInstance();
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         wController.close();
     }
 
