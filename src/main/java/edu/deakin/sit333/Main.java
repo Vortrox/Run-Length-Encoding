@@ -1,25 +1,27 @@
 package edu.deakin.sit333;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class Main {
-    public static void main(String[] args) {
-        System.setProperty(
-                "webdriver.edge.driver",
-                "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_122.0.2365.66.exe");
-
-        WebDriver driver = new EdgeDriver();
-        System.out.println(driver);
-
-        driver.get("https://www.google.com");
-
-        try {
-            Thread.sleep(5*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        driver.close();
+/**
+ * Main entry of application.
+ *
+ */
+public class Main 
+{
+    public static void main( String[] args )
+    {
+        WeatherController wController = WeatherController.getInstance();
+        
+        System.out.println("Temperature min: " + wController.getTemperatureMinFromCache());
+        System.out.println("Temperature max: " + wController.getTemperatureMaxFromCache());
+        System.out.println("Temperature avg: " + wController.getTemperatureAverageFromCache());
+        System.out.println("Temperature at first hour: " + wController.getTemperatureForHour(1));
+        
+        String persistTime = wController.persistTemperature(10, 23.2);
+        String now = new SimpleDateFormat("H:m:s").format(new Date());
+        System.out.println("Persist time: " + persistTime + ", now: " + now);
+        
+        wController.close();
     }
 }
