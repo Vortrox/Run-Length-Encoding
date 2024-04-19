@@ -18,13 +18,43 @@ public class WeatherAndMathUtilsTest {
 		Assert.assertNotNull("Student name is null", studentName);
 	}
 
+    @Test
+    public void testTrue2IsEven() {
+        Assert.assertTrue(WeatherAndMathUtils.isEven(2));
+    }
+
 	@Test
-	public void testFalseNumberIsEven() {
-		Assert.fail("Not yet implemented");
+	public void testFalse3IsEven() {
+		Assert.assertFalse(WeatherAndMathUtils.isEven(3));
 	}
 
 	@Test
 	public void testCancelWeatherAdvice() {
 		Assert.assertEquals("CANCEL", WeatherAndMathUtils.weatherAdvice(70.1, 0.0));
 	}
+
+    @Test
+    public void testWarnWeatherAdvice() {
+        Assert.assertEquals("WARN", WeatherAndMathUtils.weatherAdvice(45.1, 0.0));
+    }
+
+    @Test
+    public void testAllClearWeatherAdvice() {
+        Assert.assertEquals("ALL CLEAR", WeatherAndMathUtils.weatherAdvice(0.0, 0.0));
+    }
+
+    @Test
+    public void testFalse1IsPrime() {
+        Assert.assertFalse(WeatherAndMathUtils.isPrime(1));
+    }
+
+    @Test
+    public void testTrue2IsPrime() {
+        Assert.assertTrue(WeatherAndMathUtils.isPrime(2));
+    }
+
+    @Test
+    public void testFalse8IsPrime() {
+        Assert.assertFalse(WeatherAndMathUtils.isPrime(8));
+    }
 }
