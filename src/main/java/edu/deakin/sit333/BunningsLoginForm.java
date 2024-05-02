@@ -8,6 +8,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class BunningsLoginForm {
     private static final String loginFormURL = "https://www.bunnings.com.au/login";
+    private final WebDriver driver;
+    private final WebElement usernameTextBox;
+    private final WebElement passwordTextBox;
+    private final WebElement signInButton;
 
     private static WebDriver getEdgeDriver() {
         // todo: It may be worthwhile loading this property from something similar to an .env file in the future
@@ -15,24 +19,23 @@ public class BunningsLoginForm {
         return new EdgeDriver();
     }
 
-    public static WebDriver login(String username, String password) {
+    public BunningsLoginForm() {
         // todo: Consider Fast property of FIRST and re-use identified elements across tests
-        WebDriver driver = getEdgeDriver();
+        driver = getEdgeDriver();
         driver.get(loginFormURL);
 
-        WebElement usernameTextBox = driver.findElement(By.id("okta-signin-username"));
-        usernameTextBox.sendKeys(username);
-
-        WebElement passwordTextBox = driver.findElement(By.id("okta-signin-password"));
-        passwordTextBox.sendKeys(password);
-
-        WebElement signInButton = driver.findElement(By.id("okta-signin-submit"));
-        signInButton.click();
-
-        return driver;
+        usernameTextBox = driver.findElement(By.id("okta-signin-username"));
+        passwordTextBox = driver.findElement(By.id("okta-signin-password"));
+        signInButton = driver.findElement(By.id("okta-signin-submit"));
     }
 
-    public static boolean loginSuccessful(WebDriver driver) {
+    public void login(String username, String password) {
+        usernameTextBox.sendKeys(username);
+        passwordTextBox.sendKeys(password);
+        signInButton.click();
+    }
+
+    public boolean loginSuccessful() {
         String signOutButtonXPath = "//*[@id=\"toobar-container\"]/div/div/div/div/div[2]/ul/li[9]/a";
         // Login is successful if Selenium can locate the "Sign Out" button
         return !driver.findElements(By.xpath(signOutButtonXPath)).isEmpty();
