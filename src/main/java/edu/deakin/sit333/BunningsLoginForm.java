@@ -40,4 +40,8 @@ public class BunningsLoginForm {
         // Login is successful if Selenium can locate the "Sign Out" button
         return !driver.findElements(By.xpath(signOutButtonXPath)).isEmpty();
     }
+
+    public void close() {
+        driver.close();
+    }
 }
