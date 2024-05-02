@@ -1,6 +1,7 @@
 package edu.deakin.sit333;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -29,5 +30,11 @@ public class BunningsLoginForm {
         signInButton.click();
 
         return driver;
+    }
+
+    public static boolean loginSuccessful(WebDriver driver) {
+        String signOutButtonXPath = "//*[@id=\"toobar-container\"]/div/div/div/div/div[2]/ul/li[9]/a";
+        // Login is successful if Selenium can locate the "Sign Out" button
+        return !driver.findElements(By.xpath(signOutButtonXPath)).isEmpty();
     }
 }
