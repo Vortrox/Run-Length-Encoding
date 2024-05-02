@@ -14,7 +14,7 @@ public class BunningsLoginForm {
         return new EdgeDriver();
     }
 
-    public static void login(String username, String password) {
+    public static WebDriver login(String username, String password) {
         // todo: Consider Fast property of FIRST and re-use identified elements across tests
         WebDriver driver = getEdgeDriver();
         driver.get(loginFormURL);
@@ -27,5 +27,7 @@ public class BunningsLoginForm {
 
         WebElement signInButton = driver.findElement(By.id("okta-signin-submit"));
         signInButton.click();
+
+        return driver;
     }
 }
