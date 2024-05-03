@@ -1,7 +1,9 @@
 package edu.deakin.sit333;
 
+import edu.deakin.sit333.sample.StudentRepository;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 public class BodyTemperatureMonitorTest {
 
@@ -19,22 +21,47 @@ public class BodyTemperatureMonitorTest {
 
     @Test
     public void testReadTemperatureNegative() {
-        Assert.assertTrue("Not tested", false);
+        // todo: make class field, instantiate before all tests?
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(temperatureSensor.readTemperatureValue()).thenReturn(-1.0);
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        Assert.assertTrue(bodyTemperatureMonitor.readTemperature() < 0);
     }
 
     @Test
     public void testReadTemperatureZero() {
-        Assert.assertTrue("Not tested", false);
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(temperatureSensor.readTemperatureValue()).thenReturn(0.0);
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        Assert.assertEquals(0.0, bodyTemperatureMonitor.readTemperature(), 0.0);
     }
 
     @Test
     public void testReadTemperatureNormal() {
-        Assert.assertTrue("Not tested", false);
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(temperatureSensor.readTemperatureValue()).thenReturn(36.0);
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        Assert.assertEquals(36.0, bodyTemperatureMonitor.readTemperature(), 0.0);
     }
 
     @Test
     public void testReadTemperatureAbnormallyHigh() {
-        Assert.assertTrue("Not tested", false);
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(temperatureSensor.readTemperatureValue()).thenReturn(100.0);
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        Assert.assertEquals(100.0, bodyTemperatureMonitor.readTemperature(), 0.0);
     }
 
     /*
