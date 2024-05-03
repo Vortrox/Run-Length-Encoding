@@ -1,0 +1,72 @@
+@Test
+public void testFailIncorrectEmailAndIncorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(INVALID_EMAIL, INVALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailIncorrectEmailAndBlankPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(INVALID_EMAIL, "");
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailIncorrectEmailAndCorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(INVALID_EMAIL, VALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailBlankEmailAndIncorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login("", INVALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailBlankEmailAndBlankPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login("", "");
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailBlankEmailAndCorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login("", VALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailCorrectEmailAndIncorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(VALID_EMAIL, INVALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testFailCorrectEmailAndBlankPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(VALID_EMAIL, "");
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
+@Test
+public void testPassCorrectEmailAndCorrectPassword() {
+    BunningsLoginForm form = new BunningsLoginForm();
+    form.login(VALID_EMAIL, VALID_PASSWORD);
+    Assert.assertFalse(form.loginSuccessful());
+    form.close();
+}
+
