@@ -42,6 +42,7 @@ public class BunningsLoginForm {
     }
 
     public void close() {
+        driver.manage().deleteAllCookies();
         driver.close();
     }
 }
