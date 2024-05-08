@@ -18,6 +18,8 @@ dependencies {
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.10.2'
     // https://mvnrepository.com/artifact/org.mockito/mockito-core
     testImplementation 'org.mockito:mockito-core:3.12.4'
+    // https://mvnrepository.com/artifact/javax.servlet/servlet-api
+    compileOnly 'javax.servlet:servlet-api:2.5'
 }
 
 test {
