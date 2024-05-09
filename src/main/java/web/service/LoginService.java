@@ -14,11 +14,11 @@ public class LoginService {
      * @return
      */
     public static boolean login(String username, String password, String dob) {
-        // Match a fixed user name and password.
-        //
-        if ("ahsan".equals(username) && "ahsan_pass".equals(password)) {
+        // Match a fixed username and password.
+        if (username.equals("testuser") && password.equals("testpass") && dob.equals("2000-06-15")) {
             return true;
         }
+
         return false;
     }
 
