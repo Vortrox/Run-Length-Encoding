@@ -9,16 +9,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 
 public class LoginServiceTest {
-
-    private void sleep(long sec) {
-        try {
-            Thread.sleep(sec*1000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
     @Test
     public void testLoginSuccess() {
         System.setProperty("webdriver.edge.driver", "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_124.0.2477.0.exe");
@@ -29,7 +19,6 @@ public class LoginServiceTest {
         // Full path where login.html is located.
         // You can click on html file and copy the path shown in your browser.
         driver.navigate().to(System.getProperty("user.dir") + "/pages/login.html");
-        sleep(5);
 
         // Find username element
         WebElement ele = driver.findElement(By.id("username"));
@@ -49,8 +38,6 @@ public class LoginServiceTest {
         // Find Submit button, and click on button.
         ele = driver.findElement(By.cssSelector("[type=submit]"));
         ele.submit();
-
-        sleep(5);
 
         /*
          * On successful login, the title of page changes to 'success',
