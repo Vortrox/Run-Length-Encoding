@@ -29,8 +29,7 @@ public class LoginServiceTest {
         // Full path where login.html is located.
         // You can click on html file and copy the path shown in your browser.
         //
-        driver.navigate().to(
-                "file:///home/mahabib/Documents/deakin_local/teaching/2024/sit707/jetty/pages/login.html");
+        driver.navigate().to(System.getProperty("user.dir") + "/pages/login.html");
         sleep(5);
 
         // Find username element
