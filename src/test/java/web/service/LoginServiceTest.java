@@ -48,6 +48,131 @@ public class LoginServiceTest {
         System.out.println("Title: " + title);
 
         Assert.assertEquals(title, "success");
+    }
 
+    @Test
+    public void testFailIncorrectUsername() {
+        WebElement ele = driver.findElement(By.id("username"));
+        ele.clear();
+        ele.sendKeys("aaa");
+
+        ele = driver.findElement(By.id("passwd"));
+        ele.clear();
+        ele.sendKeys("testpass");
+
+        ele = driver.findElement(By.id("dob"));
+        ele.clear();
+        ele.sendKeys("15062000");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
+    }
+
+    @Test
+    public void testFailIncorrectPassword() {
+        WebElement ele = driver.findElement(By.id("username"));
+        ele.clear();
+        ele.sendKeys("testuser");
+
+        ele = driver.findElement(By.id("passwd"));
+        ele.clear();
+        ele.sendKeys("aaa");
+
+        ele = driver.findElement(By.id("dob"));
+        ele.clear();
+        ele.sendKeys("15062000");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
+    }
+
+    @Test
+    public void testFailIncorrectDOB() {
+        WebElement ele = driver.findElement(By.id("username"));
+        ele.clear();
+        ele.sendKeys("testuser");
+
+        ele = driver.findElement(By.id("passwd"));
+        ele.clear();
+        ele.sendKeys("testpass");
+
+        ele = driver.findElement(By.id("dob"));
+        ele.clear();
+        ele.sendKeys("00000000");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
+    }
+
+    @Test
+    public void testFailBlankUsername() {
+        WebElement ele = driver.findElement(By.id("passwd"));
+        ele.clear();
+        ele.sendKeys("testpass");
+
+        ele = driver.findElement(By.id("dob"));
+        ele.clear();
+        ele.sendKeys("15062000");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
+    }
+
+    @Test
+    public void testFailBlankPassword() {
+        WebElement ele = driver.findElement(By.id("username"));
+        ele.clear();
+        ele.sendKeys("testuser");
+
+        ele = driver.findElement(By.id("dob"));
+        ele.clear();
+        ele.sendKeys("15062000");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
+    }
+
+    @Test
+    public void testFailBlankDOB() {
+        WebElement ele = driver.findElement(By.id("username"));
+        ele.clear();
+        ele.sendKeys("testuser");
+
+        ele = driver.findElement(By.id("passwd"));
+        ele.clear();
+        ele.sendKeys("testpass");
+
+        ele = driver.findElement(By.cssSelector("[type=submit]"));
+        ele.submit();
+
+        String title = driver.getTitle();
+        System.out.println("Title: " + title);
+
+        Assert.assertEquals(title, "fail");
     }
 }
