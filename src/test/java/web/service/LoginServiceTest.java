@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 
 public class LoginServiceTest {
@@ -21,11 +21,9 @@ public class LoginServiceTest {
 
     @Test
     public void testLoginSuccess() {
-        System.setProperty(
-                "webdriver.chrome.driver",
-                "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
+        System.setProperty("webdriver.edge.driver", "C:\\Users\\Vortrox\\Documents\\Scripts\\msedgedriver_124.0.2477.0.exe");
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new EdgeDriver();
         System.out.println("Driver info: " + driver);
 
         // Full path where login.html is located.
