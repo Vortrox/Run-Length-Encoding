@@ -22,6 +22,8 @@ dependencies {
     compileOnly 'javax.servlet:servlet-api:2.5'
     // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     implementation 'org.eclipse.jetty:jetty-server:9.4.54.v20240208'
+    // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
+    implementation 'org.eclipse.jetty:jetty-servlet:9.4.54.v20240208'
 }
 
 test {
