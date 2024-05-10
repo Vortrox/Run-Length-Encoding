@@ -8,8 +8,89 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
+import java.text.ParseException;
+
 @RunWith(Enclosed.class)
 public class LoginServiceTest {
+    public static class LoginFunctionTests {
+        @Test
+        public void testFailInvalidDate() {
+            Assert.assertThrows(ParseException.class, () -> LoginService.login("aaa", "aaa", "aaa"));
+        }
+
+        @Test
+        public void testFailWrongUsernameWrongPasswordWrongDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("aaa", "aaa", "2000-01-01"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailWrongUsernameWrongPasswordCorrectDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("aaa", "aaa", "2000-06-15"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailWrongUsernameCorrectPasswordWrongDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("aaa", "testpass", "2000-01-01"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailWrongUsernameCorrectPasswordCorrectDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("aaa", "testpass", "2000-06-15"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailCorrectUsernameWrongPasswordWrongDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("testuser", "aaa", "2000-01-01"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailCorrectUsernameWrongPasswordCorrectDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("testuser", "aaa", "2000-06-15"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testFailCorrectUsernameCorrectPasswordWrongDoB() {
+            try {
+                Assert.assertFalse(LoginService.login("testuser", "testpass", "2000-01-01"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+
+        @Test
+        public void testPassCorrectUsernameCorrectPasswordCorrectDoB() {
+            try {
+                Assert.assertTrue(LoginService.login("testuser", "testpass", "2000-06-15"));
+            } catch (ParseException e) {
+                Assert.fail();
+            }
+        }
+    }
+
     public static class LoginFormTests {
         private static WebDriver driver;
         @BeforeClass
