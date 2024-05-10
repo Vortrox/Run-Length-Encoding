@@ -1,6 +1,8 @@
 package edu.deakin.sit333;
 
 import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
@@ -8,6 +10,7 @@ import java.util.Random;
 public class WeatherController {
 
     public static final int HOURS_PER_DAY = 3;
+    private Clock clock = Clock.systemUTC();
 
     private static WeatherController instance;
 
@@ -117,13 +120,17 @@ public class WeatherController {
      */
     public String persistTemperature(int hour, double temperature) {
         SimpleDateFormat sdf = new SimpleDateFormat("H:m:s");
-        String savedTime = sdf.format(new Date());
+        String savedTime = sdf.format(Date.from(clock.instant()));
         System.out.println("Temperature: " + temperature + " of hour: " + hour + ", saved at " + savedTime);
 
         // sleep a while to simulate a delay
         sleep(1 + new Random().nextInt(2));
 
         return savedTime;
+    }
+
+    public void setClock(Clock clock) {
+        this.clock = clock;
     }
 
     /**
