@@ -38,21 +38,21 @@ public class LoginServlet extends HttpServlet{
         System.out.println("Username/password: " + username + ", " + password);
 
         String loginStatus = "fail";
-        String errorMessage = null;
+        String invalidDateErrorMessage = null;
 
         try {
             if (LoginService.login(username, password, dob)) {
                 loginStatus = "success";
             }
         } catch (ParseException e) {
-            errorMessage = e.getMessage();
+            invalidDateErrorMessage = e.getMessage();
         }
 
         String htmlResponse = "<html>";
         htmlResponse += "<head><title>"+ loginStatus + "</title></head>";
         htmlResponse += "<h2 id=\"loginStatus\">Login status: " + loginStatus + "</h2>";
-        if (errorMessage != null) {
-            htmlResponse += "<h2 id=\"errorMessage\">Error: " + errorMessage + "</h2>";
+        if (invalidDateErrorMessage != null) {
+            htmlResponse += "<h2 id=\"invalidDateErrorMessage\">Error: " + invalidDateErrorMessage + "</h2>";
         }
         htmlResponse += "</html>";
 
