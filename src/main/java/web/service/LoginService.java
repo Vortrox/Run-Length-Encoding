@@ -1,5 +1,9 @@
 package web.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  * Business logic to handle login functions.
  * 
@@ -13,7 +17,11 @@ public class LoginService {
      * @param password
      * @return
      */
-    public static boolean login(String username, String password, String dob) {
+    public static boolean login(String username, String password, String dob) throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        df.setLenient(false);
+        df.parse(dob);
+
         // Match a fixed username and password.
         if (username.equals("testuser") && password.equals("testpass") && dob.equals("2000-06-15")) {
             return true;

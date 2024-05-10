@@ -2,6 +2,7 @@ package web.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,14 +38,22 @@ public class LoginServlet extends HttpServlet{
         System.out.println("Username/password: " + username + ", " + password);
 
         String loginStatus = "fail";
+        String errorMessage = null;
 
-        if (LoginService.login(username, password, dob)) {
-            loginStatus = "success";
+        try {
+            if (LoginService.login(username, password, dob)) {
+                loginStatus = "success";
+            }
+        } catch (ParseException e) {
+            errorMessage = e.getMessage();
         }
 
         String htmlResponse = "<html>";
         htmlResponse += "<head><title>"+ loginStatus + "</title></head>";
         htmlResponse += "<h2>Login status: " + loginStatus + "</h2>";
+        if (errorMessage != null) {
+            htmlResponse += "<h2>Error: " + errorMessage + "</h2>";
+        }
         htmlResponse += "</html>";
 
         PrintWriter writer = resp.getWriter();
