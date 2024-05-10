@@ -50,9 +50,9 @@ public class LoginServlet extends HttpServlet{
 
         String htmlResponse = "<html>";
         htmlResponse += "<head><title>"+ loginStatus + "</title></head>";
-        htmlResponse += "<h2>Login status: " + loginStatus + "</h2>";
+        htmlResponse += "<h2 id=\"loginStatus\">Login status: " + loginStatus + "</h2>";
         if (errorMessage != null) {
-            htmlResponse += "<h2>Error: " + errorMessage + "</h2>";
+            htmlResponse += "<h2 id=\"errorMessage\">Error: " + errorMessage + "</h2>";
         }
         htmlResponse += "</html>";
 

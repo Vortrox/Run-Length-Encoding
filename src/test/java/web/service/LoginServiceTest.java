@@ -47,10 +47,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "success");
+            Assert.assertEquals(loginStatus, "Login status: success");
         }
 
         @Test
@@ -70,10 +70,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
 
         @Test
@@ -93,10 +93,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
 
         @Test
@@ -116,10 +116,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
 
         @Test
@@ -135,10 +135,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
 
         @Test
@@ -154,10 +154,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
 
         @Test
@@ -173,10 +173,10 @@ public class LoginServiceTest {
             ele = driver.findElement(By.cssSelector("[type=submit]"));
             ele.submit();
 
-            String title = driver.getTitle();
-            System.out.println("Title: " + title);
+            String loginStatus = driver.findElement(By.id("loginStatus")).getText();
+            System.out.println(loginStatus);
 
-            Assert.assertEquals(title, "fail");
+            Assert.assertEquals(loginStatus, "Login status: fail");
         }
     }
 }
