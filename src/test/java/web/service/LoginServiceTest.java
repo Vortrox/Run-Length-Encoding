@@ -177,6 +177,7 @@ public class LoginServiceTest {
             System.out.println(loginStatus);
 
             Assert.assertEquals(loginStatus, "Login status: fail");
+            Assert.assertFalse(driver.findElements(By.id("invalidDateErrorMessage")).isEmpty());
         }
     }
 }
