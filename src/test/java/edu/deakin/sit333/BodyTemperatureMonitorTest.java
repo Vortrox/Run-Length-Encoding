@@ -5,27 +5,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 public class BodyTemperatureMonitorTest {
-    /**
-     * NotificationSender that intercepts the last email notification message and returns it through a getter
-     */
-    private static class MessageInterceptingNotificationSender implements NotificationSender {
-        String lastNotificationMessage = "";
-
-        public String getLastNotificationMessage() {
-            return lastNotificationMessage;
-        }
-
-        @Override
-        public void sendEmailNotification(Customer customer, String msg) {
-            lastNotificationMessage = msg;
-        }
-
-        @Override
-        public void sendEmailNotification(FamilyDoctor familyDoctor, String msg) {
-            lastNotificationMessage = msg;
-        }
-    }
-
     @Test
     public void testStudentIdentity() {
         String studentId = null;
@@ -100,26 +79,26 @@ public class BodyTemperatureMonitorTest {
 	@Test
 	public void testInquireBodyStatusNormalNotification() {
         TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
-        MessageInterceptingNotificationSender notificationSender = new MessageInterceptingNotificationSender();
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
         CloudService cloudService = Mockito.mock(CloudService.class);
         Mockito.when(cloudService.queryCustomerBodyStatus(Mockito.any())).thenReturn("NORMAL");
         BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
 
         bodyTemperatureMonitor.inquireBodyStatus();
-        
-        Assert.assertEquals("Thumbs Up!", notificationSender.getLastNotificationMessage());
+
+        Mockito.verify(notificationSender, Mockito.times(1)).sendEmailNotification(Mockito.any(Customer.class), Mockito.anyString());
     }
 
 	@Test
 	public void testInquireBodyStatusAbnormalNotification() {
         TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
-        MessageInterceptingNotificationSender notificationSender = new MessageInterceptingNotificationSender();
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
         CloudService cloudService = Mockito.mock(CloudService.class);
         Mockito.when(cloudService.queryCustomerBodyStatus(Mockito.any())).thenReturn("ABNORMAL");
         BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
 
         bodyTemperatureMonitor.inquireBodyStatus();
 
-        Assert.assertEquals("Emergency!", notificationSender.getLastNotificationMessage());
+        Mockito.verify(notificationSender, Mockito.times(1)).sendEmailNotification(Mockito.any(FamilyDoctor.class), Mockito.anyString());
 	}
 }
