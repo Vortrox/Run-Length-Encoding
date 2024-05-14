@@ -1,11 +1,30 @@
 package edu.deakin.sit333;
 
-import edu.deakin.sit333.sample.StudentRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 public class BodyTemperatureMonitorTest {
+    /**
+     * NotificationSender that intercepts the last email notification message and returns it through a getter
+     */
+    private static class MessageInterceptingNotificationSender implements NotificationSender {
+        String lastNotificationMessage = "";
+
+        public String getLastNotificationMessage() {
+            return lastNotificationMessage;
+        }
+
+        @Override
+        public void sendEmailNotification(Customer customer, String msg) {
+            lastNotificationMessage = msg;
+        }
+
+        @Override
+        public void sendEmailNotification(FamilyDoctor familyDoctor, String msg) {
+            lastNotificationMessage = msg;
+        }
+    }
 
     @Test
     public void testStudentIdentity() {
@@ -64,30 +83,43 @@ public class BodyTemperatureMonitorTest {
         Assert.assertEquals(100.0, bodyTemperatureMonitor.readTemperature(), 0.0);
     }
 
-    /*
-     * CREDIT or above level students, Remove comments.
-     */
-//	@Test
-//	public void testReportTemperatureReadingToCloud() {
-//		// Mock reportTemperatureReadingToCloud() calls cloudService.sendTemperatureToCloud()
-//		
-//		Assert.assertTrue("Not tested", false);
-//	}
+	@Test
+	public void testReportTemperatureReadingToCloud() {
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        NotificationSender notificationSender = Mockito.mock(NotificationSender.class);
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        TemperatureReading temperatureReading = new TemperatureReading();
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        bodyTemperatureMonitor.reportTemperatureReadingToCloud(temperatureReading);
+
+        Mockito.verify(cloudService, Mockito.times(1)).sendTemperatureToCloud(temperatureReading);
+	}
 
 
-    /*
-     * CREDIT or above level students, Remove comments.
-     */
-//	@Test
-//	public void testInquireBodyStatusNormalNotification() {
-//		Assert.assertTrue("Not tested", false);
-//	}
+	@Test
+	public void testInquireBodyStatusNormalNotification() {
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        MessageInterceptingNotificationSender notificationSender = new MessageInterceptingNotificationSender();
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(cloudService.queryCustomerBodyStatus(Mockito.any())).thenReturn("NORMAL");
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
 
-    /*
-     * CREDIT or above level students, Remove comments.
-     */
-//	@Test
-//	public void testInquireBodyStatusAbnormalNotification() {
-//		Assert.assertTrue("Not tested", false);
-//	}
+        bodyTemperatureMonitor.inquireBodyStatus();
+        
+        Assert.assertEquals("Thumbs Up!", notificationSender.getLastNotificationMessage());
+    }
+
+	@Test
+	public void testInquireBodyStatusAbnormalNotification() {
+        TemperatureSensor temperatureSensor = Mockito.mock(TemperatureSensor.class);
+        MessageInterceptingNotificationSender notificationSender = new MessageInterceptingNotificationSender();
+        CloudService cloudService = Mockito.mock(CloudService.class);
+        Mockito.when(cloudService.queryCustomerBodyStatus(Mockito.any())).thenReturn("ABNORMAL");
+        BodyTemperatureMonitor bodyTemperatureMonitor = new BodyTemperatureMonitor(temperatureSensor, cloudService, notificationSender);
+
+        bodyTemperatureMonitor.inquireBodyStatus();
+
+        Assert.assertEquals("Emergency!", notificationSender.getLastNotificationMessage());
+	}
 }
