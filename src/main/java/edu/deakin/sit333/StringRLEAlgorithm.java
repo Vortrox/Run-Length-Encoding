@@ -2,6 +2,10 @@ package edu.deakin.sit333;
 
 public class StringRLEAlgorithm {
     public static String compress(String input) {
+        if (input.isEmpty()) {
+            return "";
+        }
+
         StringBuilder output = new StringBuilder(input.length());
         char lastChar = input.charAt(0);
         output.append(lastChar);
