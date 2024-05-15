@@ -21,6 +21,10 @@ public class StringRLEAlgorithm {
             lastChar = input.charAt(i);
         }
 
+        if (runLength > 1) {
+            output.append(runLength);
+        }
+
         return output.toString();
     }
 
