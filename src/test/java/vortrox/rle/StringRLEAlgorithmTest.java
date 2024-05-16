@@ -285,4 +285,151 @@ public class StringRLEAlgorithmTest {
             assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
         }
     }
+
+    public static class InverseOperationTests {
+        @Test
+        public void test1EInverseCheckCompress_aabb() {
+            String input = "aabb";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test2EInverseCheckCompress_abbb() {
+            String input = "abbb";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test3EInverseCheckCompress_aaab() {
+            String input = "aaab";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test4EInverseCheckCompress_abcde() {
+            String input = "abcde";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test5EInverseCheckCompress_aabbccddee() {
+            String input = "aabbccddee";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test6EInverseCheckCompress_aaaabaaaa() {
+            String input = "aaaabaaaa";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test7EInverseCheckCompress_aaaa() {
+            String input = "aaaa";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test8EInverseCheckCompress_a() {
+            String input = "a";
+            String result = StringRLEAlgorithm.compress(input);
+            String inverseResult = StringRLEAlgorithm.decompress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+
+        @Test
+        public void test1FInverseCheckDecompress_a2b2() {
+            String input = "a2b2";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test2FInverseCheckDecompress_ab3() {
+            String input = "ab3";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test3FInverseCheckDecompress_a3b() {
+            String input = "a3b";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test4FInverseCheckDecompress_abcde() {
+            String input = "abcde";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test5FInverseCheckDecompress_a2b2c2d2e2() {
+            String input = "a2b2c2d2e2";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test6FInverseCheckDecompress_a4ba4() {
+            String input = "a4ba4";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test7FInverseCheckDecompress_a4() {
+            String input = "a4";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+
+        @Test
+        public void test8FInverseCheckDecompress_a() {
+            String input = "a";
+            String result = StringRLEAlgorithm.decompress(input);
+            String inverseResult = StringRLEAlgorithm.compress(result);
+
+            assertEquals(input, inverseResult);
+        }
+    }
 }
