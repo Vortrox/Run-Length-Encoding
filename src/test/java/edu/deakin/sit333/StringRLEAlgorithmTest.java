@@ -1,6 +1,5 @@
 package edu.deakin.sit333;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -185,6 +184,105 @@ public class StringRLEAlgorithmTest {
         @Test
         public void test18BFailDecompressStartsWithNumber() {
             assertThrows(UnsupportedOperationException.class, () -> StringRLEAlgorithm.decompress("2a2b"));
+        }
+    }
+
+    public static class CrossCheckTests {
+        @Test
+        public void test1CCrossCheckCompress_aabb() {
+            String input = "aabb";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test2CCrossCheckCompress_abbb() {
+            String input = "abbb";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test3CCrossCheckCompress_aaab() {
+            String input = "aaab";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test4CCrossCheckCompress_abcde() {
+            String input = "abcde";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test5CCrossCheckCompress_aabbccddee() {
+            String input = "aabbccddee";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test6CCrossCheckCompress_aaaabaaaa() {
+            String input = "aaaabaaaa";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test7CCrossCheckCompress_aaaa() {
+            String input = "aaaa";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+        @Test
+        public void test8CCrossCheckCompress_a() {
+            String input = "a";
+            assertEquals(AlternativeRLE.runLengthEncode(input), StringRLEAlgorithm.compress(input));
+        }
+
+
+        @Test
+        public void test1DCrossCheckDecompress_a2b2() {
+            String input = "a2b2";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test2DCrossCheckDecompress_ab3() {
+            String input = "ab3";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test3DCrossCheckDecompress_a3b() {
+            String input = "a3b";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test4DCrossCheckDecompress_abcde() {
+            String input = "abcde";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test5DCrossCheckDecompress_a2b2c2d2e2() {
+            String input = "a2b2c2d2e2";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test6DCrossCheckDecompress_a4ba4() {
+            String input = "a4ba4";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test7DCrossCheckDecompress_a4() {
+            String input = "a4";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
+        }
+
+        @Test
+        public void test8DCrossCheckDecompress_a() {
+            String input = "a";
+            assertEquals(AlternativeRLE.runLengthDecode(input), StringRLEAlgorithm.decompress(input));
         }
     }
 }
