@@ -43,6 +43,10 @@ public class StringRLEAlgorithm {
             return "";
         }
 
+        if (!Pattern.matches("^([a-z]+\\d*)+$", input)) {
+            throw new UnsupportedOperationException("Invalid format");
+        }
+
         StringBuilder output = new StringBuilder();
         // Assumes that the first character in the input will be a letter
         char lastLetter = input.charAt(0);
