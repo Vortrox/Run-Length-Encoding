@@ -1,9 +1,15 @@
 package vortrox.rle;
 
+import java.util.regex.Pattern;
+
 public class StringRLEAlgorithm {
     public static String compress(String input) {
         if (input.isEmpty()) {
             return "";
+        }
+
+        if (!Pattern.matches("^[a-z]+$", input)) {
+            throw new UnsupportedOperationException("Invalid format");
         }
 
         StringBuilder output = new StringBuilder(input.length());
