@@ -63,9 +63,11 @@ public class StringRLEAlgorithm {
             }
         }
 
-        // Append the last letter n - 1 times to the end of the output
-        for (int j = 1; j < Integer.parseInt(digits.toString()); j++) {
-            output.append(lastLetter);
+        if (digits.length() > 0) {
+            // Append the last letter n - 1 times to the end of the output
+            for (int j = 1; j < Integer.parseInt(digits.toString()); j++) {
+                output.append(lastLetter);
+            }
         }
 
         return output.toString();
