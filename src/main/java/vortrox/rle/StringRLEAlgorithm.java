@@ -60,7 +60,7 @@ public class StringRLEAlgorithm {
             } else {
                 if (digits.length() > 0) {
                     // Append the last letter n - 1 times to the end of the output
-                    for (int j = 0; j < Integer.parseInt(digits.toString()); j++) {
+                    for (int j = 0; j < Integer.parseInt(digits.toString()) - 1; j++) {
                         output.append(lastLetter);
                     }
                 }
