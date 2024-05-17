@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 @RunWith(Enclosed.class)
 public class StringRLEAlgorithmTest {
-    public static class CompressionAlgorithmTests {
+    public static class BoundaryValueTests {
         @Test
         public void test1APassCompress_aabb_a2b2() {
             assertEquals("a2b2", StringRLEAlgorithm.compress("aabb"));
@@ -93,9 +93,7 @@ public class StringRLEAlgorithmTest {
         public void test17AFailCompressCapitalLetterAtMid() {
             assertThrows(UnsupportedOperationException.class, () -> StringRLEAlgorithm.compress("aaaaA"));
         }
-    }
 
-    public static class DecompressionAlgorithmTests {
         @Test
         public void test1BPassDecompress_a2b2_aabb() {
             assertEquals("aabb", StringRLEAlgorithm.decompress("a2b2"));
